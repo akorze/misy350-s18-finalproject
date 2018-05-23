@@ -1,0 +1,21 @@
+{% extends "home-base.html"%}
+{% block title %}Edit Author{% endblock %}
+{% block page_content%}
+
+  <!-- Page Content -->
+  <div class="container">
+    <h1 class="mt-5"><i class="fa fa-book" aria-hidden="true"></i> Edit Author:</h1>
+    <form action="/author/edit/{{author.id}}" method="post">
+      <div class="form-group">
+        <label>Name</label>
+        <input class="form-control" type="text" name="name" value="{{author.name}}" required="true">
+      </div>
+      <div class="form-group">
+        <label>About</label>
+        <textarea class="form-control" name="about" required="true">{{author.about}}</textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Save Changes</button>
+    </form>
+  </div>
+
+{% endblock%}

@@ -1,0 +1,33 @@
+{% extends "home-base.html"%}
+{% block title %}Form Demo{% endblock %}
+{% block page_content%}
+
+  <div class="container">
+    <!-- simple html form w/o Bootstrap using GET -->
+    <h1>Hello,
+      {% if first_name %}
+        {{first_name}}
+      {% else %}
+        Stranger
+      {% endif %}
+    </h1>
+    <h3>This is a simple form w/o Bootstrap using GET:</h3>
+    <form action="/form-demo" method="get">
+    What's your name?<br>
+    <input type="text" name="first_name"><br><br>
+    <input type="submit" value="Submit">
+    </form>
+
+  <!-- simple form w/ Bootstrap using POST -->
+    <h3 class="mt-5">This is a simple form w/ Bootstrap using POST:</h3>
+    <form action="/form-demo" method="post">
+      <div class="form-group">
+        <label>What's your name?</label>
+        <input class="form-control" type="text" name="first_name"placeholder="Please enter your name">
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+  </div>
+
+{% endblock%}

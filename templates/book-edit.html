@@ -1,0 +1,48 @@
+{% extends "home-base.html"%}
+{% block title %}Edit Book{% endblock %}
+{% block page_content%}
+
+  <!-- Page Content -->
+  <div class="container">
+    <h1 class="mt-5"><i class="fa fa-book" aria-hidden="true"></i> Edit Book:</h1>
+    <form action="/book/edit/{{book.id}}" method="post">
+      <div class="form-group">
+        <label>Name</label>
+        <input class="form-control" type="text" name="name" value="{{book.name}}" required="true">
+      </div>
+      <div class="form-group">
+        <label>Year</label>
+        <select class="form-control" name="year">
+          {% for i in range(1950, 2025) %}
+            {% if i == book.year %}
+              <option selected="selected">{{i}}</option>
+            {% else %}
+              <option>{{i}}</option>
+            {% endif %}
+          {% endfor %}
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Author</label>
+        <select class="form-control" name="author">
+          {% for author in authors %}
+            {% if author == book.author %}
+              <option selected="selected">{{author.name}}</option>
+            {% else %}
+              <option>{{author.name}}</option>
+            {% endif %}
+          {% endfor %}
+        </select>
+      </div>
+      <div class="form-group">
+        Author not in the list? <a href="/author/add" class="btn btn-success" role="button" aria-disabled="true">Add Authors</a>
+      </div>
+      <div class="form-group">
+        <label>Description</label>
+        <textarea class="form-control" name="description" required="true">{{book.description}}</textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Save Changes</button>
+    </form>
+  </div>
+
+{% endblock%}

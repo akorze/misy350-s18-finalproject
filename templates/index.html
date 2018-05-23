@@ -1,0 +1,17 @@
+{% extends "home-base.html"%}
+{% block title %}Home Page{% endblock %}
+{% block head%}
+  {{ super() }}
+{% endblock%}
+{% block page_content%}
+
+  <!-- Page Content -->
+  <div class="container">
+    <h1 class="mt-5"><i class="fa fa-bullhorn" aria-hidden="true"></i> Welcome to BookBase!</h1>
+    <p>I'm making a database to catalog a list of books, their respective authors, and a little about each book and author.
+      I will have a book table with columns name, year released, and a description about each book.
+      I will also have an author table with columns name and about.
+      Each book can only have one author and one author can write many books, so there is a one-to-many relationship here.</p>
+  </div>
+
+{% endblock%}

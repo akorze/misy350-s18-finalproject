@@ -1,0 +1,45 @@
+{% extends "home-base.html"%}
+{% block title %}Add Books{% endblock %}
+{% block page_content%}
+
+  <!-- Page Content -->
+  <div class="container">
+    <h1 class="mt-5"><i class="fa fa-book" aria-hidden="true"></i> Add Books:</h1>
+    <form action="/book/add" method="post">
+      <div class="form-group">
+        <label>Name</label>
+        <input class="form-control" type="text" name="name" placeholder="Name of the Book" required="true">
+      </div>
+      <div class="form-group">
+        <label>Year</label>
+        <select class="form-control" name="year">
+          {% for i in range(1950, 2025) %}
+            {% if i == 2017 %}
+              <option selected="selected">{{i}}</option>
+            {% else %}
+              <option>{{i}}</option>
+            {% endif %}
+          {% endfor %}
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Author</label>
+        <select class="form-control" name="author">
+          {% for author in authors %}
+              <option>{{author.name}}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="form-group">
+        Author not in the list? <a href="/author/add" class="btn btn-success" role="button" aria-disabled="true">Add Authors</a>
+      </div>
+
+      <div class="form-group">
+        <label>Description</label>
+        <textarea class="form-control" name="description" placeholder="Description" required="true"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Add Book</button>
+    </form>
+  </div>
+
+{% endblock%}
